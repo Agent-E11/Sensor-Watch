@@ -76,7 +76,11 @@ LDFLAGS += -Wl,--gc-sections
 LDFLAGS += -Wl,--script=$(TOP)/watch-library/hardware/linker/saml22j18.ld
 LDFLAGS += -Wl,--print-memory-usage
 
+LDFLAGS += -Wl,-L$(TOP)/movement/watch_faces/complication/zig/build
+LDFLAGS += -Wl,-s
+
 LIBS += -lm
+LIBS += -lzig
 
 INCLUDES += \
   -I$(TOP)/tinyusb/src \
@@ -191,6 +195,7 @@ INCLUDES += \
   -I$(TOP)/watch-library/hardware/hal/utils/include/ \
   -I$(TOP)/watch-library/hardware/hpl/slcd/ \
   -I$(TOP)/watch-library/hardware/hw/ \
+  -I$(TOP)/movement/watch_faces/complication/ \
 
 SRCS += \
   $(TOP)/watch-library/simulator/main.c \
